@@ -28,7 +28,34 @@ router.post('/', (req, res) => {
     .then( newZoo => {
         res.status(201).json(newZoo)
     })
-    .catch()
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+
+    Zoos.remove(id)
+    .then( deleted => {
+        res.status(204).end();
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
+})
+
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const changes = req.body;
+
+    Zoos.update(id, changes)
+    .then( updatedZoo => {
+        res.status(200).json(updatedZoo)
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
 })
 
 module.exports = router;
