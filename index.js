@@ -7,7 +7,7 @@ const server = express();
 
 server.use(express.json());
 server.use(helmet());
-server.use('/zoos', zoosRouter)
+server.use('/api/zoos', zoosRouter)
 
 // endpoints here
 

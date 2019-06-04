@@ -10,6 +10,26 @@ const knexConfig = {
 
 const db = knex(knexConfig);
 
+module.exports = {
+    find,
+    findById, 
+    insert
+}
+
+function find() {
+    return db('zoos');
+}
+
+function findById(id) {
+    return db('zoos')
+    .where({ id })
+    .first()
+}
+
+function insert(zoo) {
+    return db('zoos').insert(zoo)
+}
+
 
 
 
